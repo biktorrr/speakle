@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1" >
+
+ <form id="menu1">
+   <field name="city">
+   <prompt>Welcome to the automated weather report. Please choose the city for which you whish to hear a forecast:
+	<enumerate>
+	 For <value expr="_prompt"/>, press <value expr="_dtmf"/>.
+	</enumerate>
+   </prompt>
+   
+	<option dtmf="1" value="amsterdam">Amsterdam</option>	
+	<option dtmf="2" value="london">London</option>
+	<option dtmf="3" value="madrid">Madrid</option>
+	<filled>
+		<submit next="#playweather" namelist="city"/>
+ 	</filled>
+  </field>
+ </form>
+
+ <form id="playweather">
+ 	<!--   <data srcexpr="'http://tango57.com/weatherapi.php?city=amsterdam" name="cityweather"/>-->
+	<data srcexpr="'./phpapi1.php?city=amsterdam'" name="cityweather"/>
+	<prompt>	
+		Ok, I've got it. <value name="cityweather"/>.
+    </prompt>
+ </form>
+ 
+ 
+ 
+ </vxml>

@@ -1,6 +1,6 @@
 <?php
 
-	$product = $_['product'];
+	$product = $_POST['product'];
 	#$product = "Tamarin";
 	print "<!--".$product."-->";
 

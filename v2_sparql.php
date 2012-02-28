@@ -13,7 +13,7 @@ WHERE {
 	$encoded_query = urlencode($myquery);
 	#print $encoded_query;
 	$myurl = 'http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query;
-	#print $myurl;
+	print "<!--".$myurl."-->";
 	$result = file_get_contents($myurl);
 
 	print "<vxml version = \"2.1\" > <form id=\"result\"> <block> <prompt>The names of the persons selling this are:\n" ;

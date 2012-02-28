@@ -2,7 +2,10 @@
 
 	$product = $_['product'];
 	#$product = "Tamarin";
-	$myquery = "SELECT DISTINCT ?pname 
+
+	$myquery = "SELECT DISTINCT ?pname WHERE { ?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname}";
+
+	$myquery2 = "SELECT DISTINCT ?pname 
 WHERE { 
 ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
 ?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 

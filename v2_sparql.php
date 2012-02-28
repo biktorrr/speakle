@@ -8,7 +8,7 @@ WHERE {
 ?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
 ?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
 ?pn <http://www.w3.org/2000/01/rdf-schema#label> '".$product ."'.
-?pn <http://purl.org/collections/w4ra/radiomarche/lname> ?pname}";
+?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname}";
 	
 	$encoded_query = urlencode($myquery);
 	#print $encoded_query;

@@ -9,9 +9,9 @@
 	</enumerate>
    </prompt>
    
-	<option dtmf="1" value="beurre_de_karite">Beurre de karite</option>	
-	<option dtmf="2" value="tamarin">Tamarin</option>
-	<option dtmf="3" value="amande_de_karite">Amande de karite</option>
+	<option dtmf="1" value="Beurre de karite">Beurre de karite</option>	
+	<option dtmf="2" value="Tamarin">Tamarin</option>
+	<option dtmf="3" value="Amande de karite">Amande de karite</option>
 	<filled>
 		<submit next="v2_sparql.php" namelist="product"/>
  	</filled>

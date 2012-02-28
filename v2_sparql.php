@@ -10,15 +10,12 @@ WHERE {
 ?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
 ?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
 ?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
-?pn <http://www.w3.org/2000/01/rdf-schema#label> '";
-	$myquery2 ="'.
+?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
 ?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname}";
-	$myquery = $myquery1 .$product .$myquery2.
 	
 
-
 	
-	$encoded_query = urlencode($myquery);
+	$encoded_query = urlencode($myquery1);
 	#print $encoded_query;
 	$myurl = 'http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query;
 	print "<!--".$myurl."-->";

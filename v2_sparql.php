@@ -12,7 +12,7 @@ WHERE {
 	$encoded_query = urlencode($myquery);
 	print $encoded_query;
 	
-	$result = file_get_contents('http://eculture.cs.vu.nl/sparql/?q=' .$encoded_query);
+	$result = file_get_contents('http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query);
 	#$result = file_get_contents('http://eculture.cs.vu.nl:1979/sparql/?query=SELECT%20DISTINCT%20?label%20WHERE%20{%20?p%20rdfs:label%20?label}%20LIMIT%2050&format=json');
 	print $result;
 

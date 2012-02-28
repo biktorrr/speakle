@@ -2,7 +2,7 @@
 
 	$city = $_['city'];
 	
-	require('./phpapi.php?q=' . $city);
+	$weather = file_get_contents('http://tango57.com/weatherapi.php?city=' . $city);
 
 ?>
 

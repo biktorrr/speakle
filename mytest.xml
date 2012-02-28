@@ -20,7 +20,7 @@
 
  <form id="playweather">
  	<!--   <data srcexpr="'http://tango57.com/weatherapi.php?city=amsterdam" name="cityweather"/>-->
-	<data srcexpr="'./phpapi1.php?city=amsterdam'" name="cityweather"/>
+	<data srcexpr="'http://tango57.com/weatherapi.php?city=amsterdam'" name="cityweather"/>
 	<prompt>	
 		Ok, I've got it. <value name="cityweather"/>.
     </prompt>

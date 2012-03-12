@@ -1,7 +1,5 @@
 <?php
-
-	$product = $_POST["product"];
-	#$product = "Tamarin";
+	$product = $_GET["product"];
 	print "<!--".$product."-->";
 
 	
@@ -19,10 +17,12 @@ WHERE {
 	#print $encoded_query;
 	$myurl = 'http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query;
 	print "<!--".$myurl."-->";
-	$result = file_get_contents($myurl);
+	$result1 = file_get_contents($myurl);
+	$xmlresult = simplexml_load_string($result1);
 
-	print "<vxml version = \"2.1\" > <form id=\"result\"> <block> <prompt>The names of the persons selling this are:\n" ;
-	print "<pre>".$result."</pre>\n";
+	print "\n<vxml version = \"2.1\" > \n<form id=\"result\">\n <block> \n<prompt>\nThe names of the persons selling this are:\n" ;
+	#print $result1;
+	print $xmlresult->results->result[0]->binding->literal;
 	print "</prompt></block></form></vxml>";
 
 ?>

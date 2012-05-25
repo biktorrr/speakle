@@ -1,6 +1,6 @@
 <?php
 
-	$product = $_POST["product"];
+	$product = $_GET["product"];
 	#$product = "Tamarin";
 	print "<!--".$product."-->";
 
@@ -17,7 +17,7 @@ WHERE {
 	
 	$encoded_query = urlencode($myquery1);
 	#print $encoded_query;
-	$myurl = 'http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query;
+	$myurl = 'http://semanticweb.cs.vu.nl/radiomarche/sparql/?query=' .$encoded_query;
 	print "<!--".$myurl."-->";
 	$result = file_get_contents($myurl);
 

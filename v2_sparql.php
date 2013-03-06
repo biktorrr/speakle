@@ -39,7 +39,7 @@ print "<!--".$myurl."-->";
 	print "The following is a list of all current offerings for ".$product ."\n" ;	
 	print "<break time=\"0.5s\"/>\n";
 
-	print "<audio src=\"audio/moutian_keita_en.wav\">\n";
+	print "<audio src=\"audio/moutian_keita_en.wav\"/>\n";
 	
  	foreach($xmlresult->results->result as $result){
 	 $firstname = $result->binding[0]->literal;

@@ -11,7 +11,7 @@
    </prompt>
     <option dtmf="1" value="product">browse by product in English</option>	
     <option dtmf="2" value="product2">browse by product in Dutch</option>
-    <option dtmf="3" value="latest">browse by region in English</option>
+    <option dtmf="3" value="region">list persons by region in English</option>
   </field>
    <filled namelist="main">
       <if cond="main == 'product'">

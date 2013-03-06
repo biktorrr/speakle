@@ -9,18 +9,18 @@
 	?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
 	?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
 	?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
-	?p <http://purl.org/vocs/speakle/voicelabel_en>	?personvoice.
+	?p <http://purl.org/collections/w4ra/speakle/voicelabel_en>	?personvoice.
 	?o <http://purl.org/collections/w4ra/radiomarche/quantity> ?quantu . 
- 	?quantu <http://purl.org/vocs/speakle/voicelabel_en>	?quant.
+ 	?quantu <http://purl.org/collections/w4ra/speakle/voicelabel_en>	?quant.
 #       ?quantu <http://www.w3.org/2000/01/rdf-schema#label>  ?quant.
 	?o <http://purl.org/collections/w4ra/radiomarche/unit_measure> ?measu . 
-	?measu <http://purl.org/vocs/speakle/voicelabel_en>	?meas.
+	?measu <http://purl.org/collections/w4ra/speakle/voicelabel_en>	?meas.
 #	?measu <http://www.w3.org/2000/01/rdf-schema#label> ?meas.
 	?o <http://purl.org/collections/w4ra/radiomarche/price> ?priceu.
 #        ?priceu  <http://www.w3.org/2000/01/rdf-schema#label> ?price . 	
-	?priceu <http://purl.org/vocs/speakle/voicelabel_en>	?price.
+	?priceu <http://purl.org/collections/w4ra/speakle/voicelabel_en>	?price.
 	?o <http://purl.org/collections/w4ra/radiomarche/currency> ?currencyu.
-	?currencyu <http://purl.org/vocs/speakle/voicelabel_en>	?currency.
+	?currencyu <http://purl.org/collections/w4ra/speakle/voicelabel_en>	?currency.
 	} 
         LIMIT 3";
 		
@@ -34,7 +34,7 @@
 	$result1 = file_get_contents($myurl);
 	$xmlresult = simplexml_load_string($result1);
 
-	print "\n<vxml version = \"2.1\" > \n<form id=\"result\">\n <block> \n<prompt>\n";
+	print "\n<vxml version = \"2.1\" > \n  <property name=\"inputmodes\" value=\"dtmf\" />  <form id=\"result\">\n <block> \n<prompt>\n";
 	print "The following is a list of the top three current offerings for ".$product ."\n" ;	
 	print "<break time=\"0.5s\"/>\n";
 

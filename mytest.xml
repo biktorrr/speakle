@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version = "2.1" >
-
+<property name="inputmodes" value="dtmf" /> 
 
  <form id="menu0">
    <field name="main">
@@ -9,15 +9,17 @@
 	 To <value expr="_prompt"/>, press <value expr="_dtmf"/>.
 	</enumerate>
    </prompt>
-    <option dtmf="1" value="product">browse by product</option>	
-	<option dtmf="2" value="region">browse by region</option>
-	<!--<option dtmf="3" value="latest">listen to the latest market information</option>-->
+    <option dtmf="1" value="product">browse by product in English</option>	
+    <option dtmf="2" value="product2">browse by product in Dutch</option>
+    <option dtmf="3" value="latest">browse by region in English</option>
   </field>
    <filled namelist="main">
       <if cond="main == 'product'">
             <goto next="#menu1"/>
-      <elseif cond="main == 'region'"/>
+      <elseif cond="main == 'product2'"/>
             <goto next="#menu2"/>
+   <elseif cond="main == 'region'"/>
+            <goto next="#menu3"/>
       <!--<elseif cond="main == 'latest'"/>
             <goto next="v2_sparql_latest.php"/>-->
       </if>
@@ -42,6 +44,24 @@
  </form>
 
 <form id="menu2">
+   <field name="product">
+   <prompt bargein="true">
+     <audio src="app_nl/dutchintro.wav"/>
+	<enumerate>
+	 Voar <value expr="_prompt"/>, toots <value expr="_dtmf"/>.
+	</enumerate>
+   </prompt>
+	<option dtmf="1" value="Beurre de karite">Shea butter</option>	
+	<option dtmf="2" value="Tamarin">Tamarind</option>
+	<option dtmf="3" value="Amande de karite">Shea nuts</option>
+	<filled>
+		<submit next="v2_sparql_nl.php" namelist="product"/>
+ 	</filled>
+  </field>
+ </form>
+
+
+<form id="menu3">
    <field name="region">
    <prompt bargein="false">
      Please enter the region.
@@ -49,7 +69,7 @@
 	 For <value expr="_prompt"/>, press <value expr="_dtmf"/>.
 	</enumerate>
    </prompt>
-<option dtmf="1" value="diora">diora</option>
+<option dtmf="1" value="Diora">Diora</option>
 <option dtmf="2" value="koula">Koula</option>
 <option dtmf="3" value="lanfiala">Lanfiala</option>
 <option dtmf="4" value="mafounde">mafoune</option>
@@ -59,4 +79,5 @@
  	</filled>
   </field>
  </form>
+
  </vxml>

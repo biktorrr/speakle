@@ -18,8 +18,9 @@
 	
 	$encoded_query = urlencode($myquery1);
 	#print $encoded_query;
-	$myurl = 'http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query;
-	print "<!--".$myurl."-->";
+#	$myurl = 'http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query;
+        $myurl = 'http://semanticweb.cs.vu.nl/radiomarche/sparql/?query=' .$encoded_query;	
+print "<!--".$myurl."-->";
 	$result1 = file_get_contents($myurl);
 	$xmlresult = simplexml_load_string($result1);
 

@@ -4,22 +4,22 @@
 
  <form id="menu0">
    <field name="main">
-   <prompt bargein="true"><audio src="./audio/welcome_en.wav"/> 
+   <prompt bargein="true">Welcome to the Radio Mar Shay Linked Data server
 	<enumerate>
 	 To <value expr="_prompt"/>, press <value expr="_dtmf"/>.
 	</enumerate>
    </prompt>
-        <option dtmf="1" value="product">browse by product</option>	
+    <option dtmf="1" value="product">browse by product</option>	
 	<option dtmf="2" value="region">browse by region</option>
-	<option dtmf="3" value="latest">listen to the latest market information</option>
+	<!--<option dtmf="3" value="latest">listen to the latest market information</option>-->
   </field>
    <filled namelist="main">
       <if cond="main == 'product'">
             <goto next="#menu1"/>
       <elseif cond="main == 'region'"/>
             <goto next="#menu2"/>
-      <elseif cond="main == 'latest'"/>
-            <goto next="v2_sparql_latest.php"/>
+      <!--<elseif cond="main == 'latest'"/>
+            <goto next="v2_sparql_latest.php"/>-->
       </if>
   </filled>
  </form>

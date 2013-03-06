@@ -4,13 +4,13 @@
 	print "<!--".$product."-->";
 
 	
-	$myquery1 = "SELECT DISTINCT ?pname 
-WHERE { 
-?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
-?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
-?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
-?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
-?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname}";
+#	$myquery1 = "SELECT DISTINCT ?pname 
+#WHERE { 
+#?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
+#?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
+#?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
+#?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
+#?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname}";
 	
 	$myquery1 = "SELECT DISTINCT ?fname ?pname ?quant ?meas ?price
 	WHERE { 
@@ -39,6 +39,8 @@ print "<!--".$myurl."-->";
 	print "The following is a list of all current offerings for ".$product ."\n" ;	
 	print "<break time=\"0.5s\"/>\n";
 
+	print "<audio src=\"audio/moutian_keita_en.wav\">\n";
+	
  	foreach($xmlresult->results->result as $result){
 	 $firstname = $result->binding[0]->literal;
 	 $pname = $result->binding[1]->literal;

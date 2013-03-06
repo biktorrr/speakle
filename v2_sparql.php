@@ -3,15 +3,24 @@
 	$product = $_GET["product"];
 	print "<!--".$product."-->";
 
-	
-#	$myquery1 = "SELECT DISTINCT ?pname 
-#WHERE { 
-#?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
-#?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
-#?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
-#?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
-#?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname}";
-	
+	$myquery1 = "SELECT DISTINCT ?personvoice ?quant ?meas ?price
+	WHERE { 
+	?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
+	?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
+	?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
+	?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
+	?p <http://purl.org/vocs/speakle/voicelabel_en>	?personvoice.
+	?o <http://purl.org/collections/w4ra/radiomarche/quantity> ?quantu . 
+        ?quantu <http://www.w3.org/2000/01/rdf-schema#label>  ?quant.
+	?o <http://purl.org/collections/w4ra/radiomarche/unit_measure> ?measu . 
+	?measu <http://www.w3.org/2000/01/rdf-schema#label> ?meas.
+	?o <http://purl.org/collections/w4ra/radiomarche/price> ?priceu.
+        ?priceu  <http://www.w3.org/2000/01/rdf-schema#label> ?price . 
+	} 
+        LIMIT 1";
+		
+
+/*
 	$myquery1 = "SELECT DISTINCT ?fname ?pname ?quant ?meas ?price
 	WHERE { 
 	?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
@@ -20,18 +29,21 @@
 	?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
 	?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname .
 	?p <http://purl.org/collections/w4ra/radiomarche/contact_fname> ?fname .
-	?o <http://purl.org/collections/w4ra/radiomarche/quantity> ?quant . 
-	?o <http://purl.org/collections/w4ra/radiomarche/unit_measure> ?meas . 
-	?o <http://purl.org/collections/w4ra/radiomarche/price> ?price . 
+	?o <http://purl.org/collections/w4ra/radiomarche/quantity> ?quantu . 
+        ?quantu <http://www.w3.org/2000/01/rdf-schema#label>  ?quant.
+	?o <http://purl.org/collections/w4ra/radiomarche/unit_measure> ?measu . 
+	?measu <http://www.w3.org/2000/01/rdf-schema#label> ?meas.
+	?o <http://purl.org/collections/w4ra/radiomarche/price> ?priceu.
+        ?priceu  <http://www.w3.org/2000/01/rdf-schema#label> ?price . 
 	}";
 		
-
+*/
 	
 	$encoded_query = urlencode($myquery1);
 	#print $encoded_query;
-#	$myurl = 'http://eculture.cs.vu.nl:1979/sparql/?query=' .$encoded_query;
         $myurl = 'http://semanticweb.cs.vu.nl/radiomarche/sparql/?query=' .$encoded_query;	
-print "<!--".$myurl."-->";
+        print "<!--".$myurl."-->";
+
 	$result1 = file_get_contents($myurl);
 	$xmlresult = simplexml_load_string($result1);
 
@@ -42,14 +54,13 @@ print "<!--".$myurl."-->";
 	print "<audio src=\"audio/moutian_keita_en.wav\"/>\n";
 	
  	foreach($xmlresult->results->result as $result){
-	 $firstname = $result->binding[0]->literal;
-	 $pname = $result->binding[1]->literal;
-	 $quant = $result->binding[2]->literal;
-	 $meas =  $result->binding[3]->literal;	 
+	 $personvoice = $result->binding[0]->uri;
+	 $quant = $result->binding[1]->literal;
+	 $meas =  $result->binding[2]->literal;	 
 	 if ($meas=="kg"){ $meas = "kilos";}
-	 $price =  $result->binding[4]->literal;
+	 $price =  $result->binding[3]->literal;
 
-	print $firstname ." " .$pname ." offers " .$quant ." " .$meas ." for " .$price ." CFA";
+	print "<audio src=\"" .$personvoice ."\"/>offers " .$quant ." " .$meas ." for " .$price ." CFA";
 	print "<break time=\"0.5s\"/>\n";
 	 }
 

@@ -1,5 +1,16 @@
 <?php
+
 	$product = $_GET["product"];
+	print "<!--".$product."-->";
+
+	
+	$myquery1 = "SELECT DISTINCT ?pname 
+WHERE { 
+?p <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/collections/w4ra/radiomarche/Person> . 
+?o <http://purl.org/collections/w4ra/radiomarche/has_contact> ?p . 
+?o <http://purl.org/collections/w4ra/radiomarche/prod_name> ?pn . 
+?pn <http://www.w3.org/2000/01/rdf-schema#label> '" .$product ."'.
+?p <http://purl.org/collections/w4ra/radiomarche/contact_lname> ?pname}";
 	
 	$myquery1 = "SELECT DISTINCT ?fname ?pname ?quant ?meas ?price
 	WHERE { 

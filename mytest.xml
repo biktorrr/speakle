@@ -3,7 +3,7 @@
 
  <form id="menu0">
    <field name="main">
-   <prompt bargein="true">Welcome to the Radio Mar shay Linked Data voice server. 
+   <prompt bargein="true">Bienvenue to the Radio Mar shay Linked Data voice server. 
 	<enumerate>
 	 To <value expr="_prompt"/>, press <value expr="_dtmf"/>.
 	</enumerate>

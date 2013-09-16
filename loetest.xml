@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1" >
+<property name="inputmodes" value="dtmf" /> 
+
+
+<form id="menu1">
+   <field name="city">
+   <prompt bargein="true">
+     About which productcity would you like to have information:
+	<enumerate>
+	 For <value expr="_prompt"/>, press <value expr="_dtmf"/>.
+	</enumerate>
+   </prompt>
+	<option dtmf="1" value="Haarlem">Haarlem</option>	
+	<option dtmf="2" value="Tamarin">Aalsmeer</option>
+	<filled>
+		<submit next="loe_sparql.php" namelist="product"/>
+ 	</filled>
+  </field>
+ </form>
+
+
+ </vxml>
